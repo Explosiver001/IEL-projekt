@@ -1,0 +1,120 @@
+\section{Příklad 1}
+% Jako parametr zadejte skupinu (A-H)
+\prvniZadani{E}
+\Large{Transformace trojúhelník - hvězda:}
+
+\begin{center}
+    \begin{circuitikz}
+        \draw (0,0)
+        node[label={[font=\footnotesize]left:A}] {}
+        to[short] (0,1)
+        to[R=$R_1$, -*] (2,1)
+        node[label={[font=\footnotesize]right:B}] {}
+        to[R=$R_3$, -*] (2,-1)
+        node[label={[font=\footnotesize]right:C}] {}
+        to[R=$R_2$] (0,-1)
+        to[short, -*] (0,0)
+        (7,0) to[R=$R_A$, -*] (5,0)
+        node[label={[font=\footnotesize]left:A}] {}
+        (8,1) to[short,-*] (7,0)
+        (8,-1) to[short] (7,0)
+        (8,1) to[R=$R_B$, -*] (10,1)
+        node[label={[font=\footnotesize]right:B}] {}
+        (8,-1) to[R=$R_C$, -*] (10,-1)
+        node[label={[font=\footnotesize]right:C}] {};
+    \end{circuitikz}
+\end{center}
+\begin{math}
+R_A =\frac{R_1R_2}{R_1+R_2+R_3} \quad R_A =\frac{485\cdot660}{485+660+100}\doteq257,1084\:\Omega\\ \\
+R_B =\frac{R_1R_3}{R_1+R_2+R_3} \quad R_B =\frac{485\cdot100}{485+660+100}\doteq38,9558\:\Omega\\ \\
+R_C =\frac{R_2R_3}{R_1+R_2+R_3} \quad R_C =\frac{660\cdot100}{485+660+100}\doteq53,0120\:\Omega\\ \\
+\end{math}
+\newpage
+\Large{Postupné zjednodušování:}
+
+\begin{center}
+    \begin{circuitikz}
+        \draw (0,2)
+        to[V,v=$U$] (0,0)
+        (0,2) to[R=$R_A$, -*] (2,2)
+        to[short] (3,3)
+        to[R=$R_B$] (5,3)
+        to[R=$R_{45}$] (7,3)
+        to[R=$R_7$] (9,3)
+        (2,2) to[short] (3,1)
+        to[short] (4,1)
+        to[R=$R_C$] (6,1)
+        to[R=$R_6$, -*] (9,1)
+        (9,3) to[short] (9,0)
+        (0,0) to[short] (2,0)
+        to[R=$R_8$] (4,0)
+        to[short] (9,0);
+    \end{circuitikz}
+\end{center}
+\begin{math}
+\newline
+U = U_1+U_2 \quad\quad U=115+55=170\:V\\ \\
+R_{45} =\frac{R_4R_5}{R_4+R_5} \quad\quad R_{45} =\frac{340\cdot575}{340+575}\doteq213,6612\:\Omega \\ \\
+\end{math}
+\begin{center}
+    \begin{circuitikz}
+        \draw (0,2)
+        to[V,v=$U$] (0,0)
+        (0,2) to[R=$R_A$, -*] (2,2)
+        to[short] (3,3)
+        to[R=$R_{B457}$] (5,3)
+        (2,2) to[short] (3,1)
+        to[R=$R_{C6}$, -*] (5,1)
+        (5,3) to[short] (5,0)
+        (0,0) to[short] (1.5,0)
+        to[R=$R_8$] (3.5,0)
+        to[short] (5,0);
+    \end{circuitikz}
+\end{center}
+\begin{math}
+\newline
+R_{B457} = R_B+R_{45}+R_7 \quad\quad R_{B457} = 38,9558+213,6612+255\doteq507,6170\:\Omega\\ \\
+R_{C6} = R_C+R_6 \quad\quad R_{C6} = 53,0120+815\doteq868,0120\:\Omega\\ \\
+\end{math}
+\begin{center}
+    \begin{circuitikz}
+        \draw (0,2)
+        to[V,v=$U$] (0,0)
+        (0,2) to[R=$R_A$] (2,2)
+        to[R=$R_{B457}$] (4,2)
+        to[short] (4,0)
+        (0,0) to[short] (1,0)
+        to[R=$R_8$] (3,0)
+        to[short] (4,0);
+    \end{circuitikz}
+\end{center}
+\begin{math}
+\newline
+R_{BC4567} =\frac{R_{B457}R_{C67}}{R_{B457}+R_{C6}} \quad\quad R_{BC4567} = \frac{508,6170\cdot868,0120}{508,6170+868,0120}\doteq320,3027\:\Omega
+\end{math}
+\newpage
+\begin{center}
+    \begin{circuitikz}
+        \draw (0,2)
+        to[V,v=$U$] (0,0)
+        (0,2) to[short, i=$I$] (2,2)
+        to[R=$R$] (2,0)
+        to[short] (0,0);
+    \end{circuitikz}
+\end{center}
+\begin{math}
+\newline
+R = R_A+R_{BC4567}+R_8 \quad\quad R = 257,1084+320,3027+225\doteq802,4111\:\Omega\\ \\
+I =\frac{U}{R} \quad\quad I =\frac{170}{802,4111}\doteq0,2119\:A\\ \\
+\end{math}
+\newline
+\Large{Získávání hodnot pro odpor č. 7:}\\ \\
+\begin{math}
+U = U_{A}+U_{RBC4567}+U_8=I(R_A+R_{BC4567}+R_8)\\ \\
+U_{RBC4567} = IR_{BC4567} \quad\quad U_{RBC4567} = 0,2119\cdot320,3027\doteq67,8721\:V\\ \\
+U_{RBC4567} = U_{RB457}= U_{RC6}\\ \\
+I_{RB} = I_{R45}= I_{R7}\\ \\ \\
+I_{R7} = \frac{U_{RBC4567}}{R_{B457}} \quad\quad I_{R7} = \frac{67,8721}{507,6170} \doteq \underline{0,1337}\:A\\ \\
+U_{R7} =  I_{R7}R_{7}\quad\quad U_{R7} =  0,1337\cdot255 \doteq\underline{34,0935}\:V\\ \\ \\ \\
+\end{math}
+\normalsize{Ověření ve falstadu: \href{https://tinyurl.com/y53bdxl5}{OBVOD}}

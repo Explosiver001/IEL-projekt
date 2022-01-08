@@ -1,0 +1,225 @@
+\section{Příklad 3}
+% Jako parametr zadejte skupinu (A-H)
+\tretiZadani{A}
+\Large{Převedeme si napěťový zdroj na proudový}
+\begin{center}
+    \begin{circuitikz}[american currents, european voltages]
+        \draw (0,0)
+        to[short] (0,0.5)
+        to[isource, l=$I_1$] (0,2.5)
+        to[short](0,3)
+        to[short, -*] (2,3)
+        to[short] (2,2.5)
+        to[R = $R_1$] (2,0.5)
+        to[short,-*] (2,0)
+        to[short] (0,0)
+        (1.75,3) to[open, v_>=\footnotesize{$U_A$}] (1.75,0)
+        (2,2) to[short, -*] (2,4.5)
+            
+        to[short] (2,6)
+        to[short] (2.5,6)
+        (4.5,6) to[isource] (2.5,6)
+        (3.5,6.25) node[label=$I$] {}
+        (4.5,6) to[short] (5,6)
+        to[short] (5,3)
+        (2,4.5) to[R=$R_5$, -*] (5,4.5)
+        (2,3) to[short] (2.5, 3)
+        to[R=$R_4$] (4.5,3)
+        to[short, -*] (5,3)
+        to[short,i^=\footnotesize{$I_{R3}$}] (5,2)
+        (5,2.5) to[R=$R_3$, v_>=\footnotesize{$U_{R3}$}] (5,0.5)
+        to[short, -*] (5,0)
+        to[short] (4.5,0)
+        to[R=$R_2$](2.5,0)
+        to[short] (0,0)
+        (5,3) to[open, v_>=\footnotesize{$U_B$}] (2,0)
+        (5,0.25) to[open, v_>=\footnotesize{$U_C$}] (2,0.25)
+        (5,3) to[short] (7,3)
+        to[short] (7,2.5)
+        (7, 0.5) to[isource, l=$I_2$] (7,2.5)
+        (7,0.5) to[short] (7,0)
+        to[short] (5,0)
+        (2,3) to[short, -*,color=red] (2,3)
+        (1.8, 3)
+            node[label={[color=red]above:1}] {}
+        (5,3) to[short, -*,color=red] (5,3)
+        (5.2, 3)
+            node[label={[color=red]above:2}] {}
+        (5,0) to[short, -*,color=red] (5,0)
+            node[label={[color=red]below:3}] {};
+    \end{circuitikz}
+\end{center}
+\begin{math}
+    I = \frac{U}{R_5}\quad\quad I=\frac{120}{32} = 3,75\:A\\\\
+\end{math}
+\newpage
+\Large{Zjednodušení pro rezistory:}
+\begin{center}
+    \begin{circuitikz}[american currents, european voltages]
+        \draw (0,0)
+        to[short] (0,0.5)
+        to[isource, l=$I_1$] (0,2.5)
+        to[short](0,3)
+        to[short, -*] (2,3)
+        to[short] (2,2.5)
+        to[R = $R_1$] (2,0.5)
+        to[short,-*] (2,0)
+        to[short] (0,0)
+        (1.75,3) to[open, v_>=\footnotesize{$U_A$}] (1.75,0)
+        (2,2) to[short] (2,4.5)
+        to[short] (2.5,4.5)
+        (4.5,4.5) to[isource] (2.5,4.5)
+        (3.5,4.75) node[label=$I$] {}
+        (4.5,4.5) to[short] (5,4.5)
+        to[short] (5,3)
+        (2,3) to[short] (2.5, 3)
+        to[R=$R_{45}$] (4.5,3)
+        to[short, -*] (5,3)
+        to[short,i^=\footnotesize{$I_{R3}$}] (5,2)
+        (5,2.5) to[R=$R_3$, v_>=\footnotesize{$U_{R3}$}] (5,0.5)
+        to[short, -*] (5,0)
+        to[short] (4.5,0)
+        to[R=$R_2$](2.5,0)
+        to[short] (0,0)
+        (5,3) to[open, v_>=\footnotesize{$U_B$}] (2,0)
+        (5,0.25) to[open, v_>=\footnotesize{$U_C$}] (2,0.25)
+        (5,3) to[short] (7,3)
+        to[short] (7,2.5)
+        (7, 0.5) to[isource, l=$I_2$] (7,2.5)
+        (7,0.5) to[short] (7,0)
+        to[short] (5,0)
+        (2,3) to[short, -*,color=red] (2,3)
+        (1.8, 3)
+            node[label={[color=red]above:1}] {}
+        (5,3) to[short, -*,color=red] (5,3)
+        (5.2, 3)
+            node[label={[color=red]above:2}] {}
+        (5,0) to[short, -*,color=red] (5,0)
+            node[label={[color=red]below:3}] {};
+    \end{circuitikz}
+\end{center}
+\begin{math}
+\newline
+R_{45} = \frac{R_4R_5}{R_4+R_5}\quad\quad R_{45} = \frac{39\cdot 32}{39+32}=\frac{1247}{71}\:\Omega\\ \\
+\end{math}
+\Large{Převod rezistorů na vodivosti:}
+\begin{center}
+    \begin{circuitikz}[american currents, european voltages]
+        \draw (0,0)
+        to[short] (0,0.5)
+        to[isource, l=$I_1$] (0,2.5)
+        to[short](0,3)
+        to[short, -*] (2,3)
+        to[short] (2,2.5)
+        to[R = $G_1$] (2,0.5)
+        to[short,-*] (2,0)
+        to[short] (0,0)
+        (1.75,3) to[open, v_>=\footnotesize{$U_A$}] (1.75,0)
+        (2,2) to[short] (2,4.5)
+        to[short] (2.5,4.5)
+        (4.5,4.5) to[isource] (2.5,4.5)
+        (3.5,4.75) node[label=$I$] {}
+        (4.5,4.5) to[short] (5,4.5)
+        to[short] (5,3)
+        (2,3) to[short] (2.5, 3)
+        to[R=$G_{45}$] (4.5,3)
+        to[short, -*] (5,3)
+        to[short,i^=\footnotesize{$I_{R3}$}] (5,2)
+        (5,2.5) to[R=$G_3$, v_>=\footnotesize{$U_{R3}$}] (5,0.5)
+        to[short, -*] (5,0)
+        to[short] (4.5,0)
+        to[R=$G_2$](2.5,0)
+        to[short] (0,0)
+        (5,3) to[open, v_>=\footnotesize{$U_B$}] (2,0)
+        (5,0.25) to[open, v_>=\footnotesize{$U_C$}] (2,0.25)
+        (5,3) to[short] (7,3)
+        to[short] (7,2.5)
+        (7, 0.5) to[isource, l=$I_2$] (7,2.5)
+        (7,0.5) to[short] (7,0)
+        to[short] (5,0)
+        (2,3) to[short, -*,color=red] (2,3)
+        (1.8, 3)
+            node[label={[color=red]above:1}] {}
+        (5,3) to[short, -*,color=red] (5,3)
+        (5.2, 3)
+            node[label={[color=red]above:2}] {}
+        (5,0) to[short, -*,color=red] (5,0)
+            node[label={[color=red]below:3}] {};
+    \end{circuitikz}
+\end{center}
+
+\begin{math}
+\newline
+    G_1 = \frac{1}{R_1} \quad\quad G_1 = \frac{1}{53}\:S\\\\
+    G_2 = \frac{1}{R_2} \quad\quad G_2 = \frac{1}{49}\:S\\\\
+    G_3 = \frac{1}{R_3} \quad\quad G_1 = \frac{1}{65}\:S\\\\
+    G_{45} = \frac{1}{R_{45}} \quad\quad G_{45} = \frac{71}{1248}\:S
+\end{math}
+\newpage
+\Large{Sestavení a úprava rovnic pro uzlová napětí:}
+\newline
+\begin{math}
+\newline
+   1)\quad I+I_1-G_1U_A+G_{45}(U_B-U_A) =0\\
+   2)\quad -I-G_{45}(U_B-U_A)+I_2-G_3(U_B-U_C) = 0\\
+   3)\quad -I_2+G_3(U_B-U_C)-G_2U_C=0\\
+   \newline
+  1)\quad -U_A(G_1+G_{45})+U_BG_{45} +0 =-I-I_1\\
+  2)\quad U_AG_{45}-U_B(G_3+G_{45})+U_CG_3=I-I_2\\
+  3)\quad 0+U_BG_3-U_C(G_2+G_3) =I_2\\ \\
+  \begin{pmatrix}
+-G_1-G_{45} & G_{45} & 0\\
+G_{45} & -G_3-G_{45} & G_3\\
+0 & G_3 & -G_2-G_3
+\end{pmatrix}
+\begin{pmatrix}
+U_A\\
+U_B\\
+U_C
+\end{pmatrix}
+=
+\begin{pmatrix}
+-I-I_1\\
+I-I_2\\
+I_2
+\end{pmatrix}\\ 
+\end{math}
+\newline
+\Large{Dosazení a výpočet determinantů pomocí Cramerova a Sarrusova pravidla:}\\
+\begin{math}
+\newline
+\begin{pmatrix}
+-\frac{3891}{6784} & \frac{71}{1248} & 0\\
+\frac{71}{1248} & -\frac{4743}{8320} & \frac{1}{65}\\
+0 & \frac{1}{65} & -\frac{114}{3185}
+\end{pmatrix}
+\begin{pmatrix}
+U_A\\
+U_B\\
+U_C
+\end{pmatrix}
+=
+\begin{pmatrix}
+-\frac{93}{20}\\
+\frac{61}{20}\\
+0,7
+\end{pmatrix}\\ \\ \\
+\Delta = [(-\frac{3891}{6784})\cdot(-\frac{4743}{8320})\cdot(-\frac{114}{3185})]-[\frac{71}{1248}\cdot\frac{71}{1248}\cdot(-\frac{114}{3185})]-[(-\frac{3891}{6784})\cdot\frac{1}{65}\cdot\frac{1}{65}]\\ \\
+\Delta_{UB} = [(-\frac{3891}{6784})\cdot\frac{61}{20}\cdot(-\frac{114}{3185})]-[\frac{71}{1248}\cdot(-\frac{93}{20})\cdot(-\frac{114}{3185})]-[(-\frac{3891}{6784})\cdot0,7\cdot\frac{1}{65}]\\ \\
+\Delta_{UC} =[(-\frac{3891}{6784})\cdot(-\frac{4743}{8320})\cdot0,7]+[\frac{71}{1248})\cdot\frac{1}{65}\cdot(-\frac{93}{20})]-[\frac{71}{1248}\cdot\frac{71}{1248}\cdot0,7] 
+ -[(-\frac{3891}{6784}\cdot\frac{1}{65}\cdot\frac{61}{20}] \\ \\ \\
+\end{math}
+\Large{Výpočet potřebných uzlových napětí:}\\
+\begin{math}
+\newline
+U_B = \frac{\Delta_{UB}}{\Delta}\quad\quad U_B \doteq 6,1476\:V\\ \\
+U_C = \frac{\Delta_{UB}}{\Delta}\quad\quad U_C \doteq  -16,9146\:V\\
+\end{math}
+\newpage
+\Large{Napětí a proud na rezistoru \(R_7\):}\\
+\begin{math}
+\newline
+U_{R3} = U_B-U_C \quad\quad U_{R3}= 6,1476-(-16,9146) \quad\quad U_{R3} \doteq \underline{23,0622}\:V\\ \\
+I_{R3} = \frac{U_{R3}}{R_3} \quad\quad I_{R3} = \frac{69,4873}{65} \quad\quad I_{R3}\doteq \underline{0,3548}\:A\\ \\ \\ \\
+\end{math}
+\normalsize{Ověření ve falstadu: \href{https://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgoqoQFMBaMMAKAEsQAWMQiwq7r2zZeVGMXYg8cPlWlVhoqNAzw16uKwDuXHrIoo8+yCwBOBown4hCGFMa4Tzt+1aouu2e+4RmbdkEULQJEoQKdgoIRDBwRsFh1BEN5ooyCTHQ83EDtaawz-eyD5ZKgEyNDUkBROMT8qmvd8atqwrxYAN0KWpqNGsIEqMDQB5V9MgKCPfpNsVW6pgM4vcDDtbuX7XM9vFgAHHJHNw7yhgfLt7JLskyA}{OBVOD}}

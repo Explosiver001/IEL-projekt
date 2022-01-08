@@ -1,0 +1,84 @@
+\section{Příklad 5}
+% Jako parametr zadejte skupinu (A-H)
+\patyZadani{C}
+\newline
+\Large{Sestavení rovnic pro sériový RC obvod:}\\
+\begin{math}
+\newline
+    U = u_R+u_C\\
+    u_R=Ri\\
+    u'_C=\frac{i}{C}\\ \\
+\end{math}
+\Large{Úprava rovnic:} \\
+\begin{math}
+\newline
+    U=R_i+u_C\\
+    U=RCu'_c+u_C\\ \\
+\end{math}
+\Large{Rovnice \(U=RCu'_c+u_C\) je diferenciální rovnice popisující chování obvodu.}
+\newpage
+\noindent{\Large{Pro řešení nehomogenní diferenciální rovnice prvního řádu použijeme úpravu:}\\}
+\begin{math}
+\newline
+    RC\lambda+1=0\\
+    \lambda=-\frac{1}{RC}\\ \\
+\end{math}
+\Large{Dosadíme do očekávaného řešení a derivujeme:}\\
+\begin{math}
+\newline
+    u_C=C(t)e^{-\frac{1}{RC}t}\\
+    u'_C=C'(t)e^{-\frac{1}{RC}t} -\frac{1}{RC}C(t)e^{-\frac{1}{RC}t}\\ \\
+\end{math}
+\Large{\(C(t)\) je pro nás neznámá proměnná.}\\ 
+\Large{Spolu s očekávaným řešením dosadíme do počáteční rovnice a následně upravíme:}\\
+\begin{math}
+\newline
+    RC[C'(t)e^{-\frac{1}{RC}t}+(-\frac{1}{RC})C(t)e^{-\frac{1}{RC}t}]+C(t)e^{-\frac{1}{RC}t} = U\\
+    RC\cdot C'(t)e^{-\frac{1}{RC}t} -RC\cdot \frac{1}{RC}C(t)e^{-\frac{1}{RC}t}+C(t)e^{-\frac{1}{RC}t} = U\\ \\
+    RC\cdot C'(t)e^{-\frac{1}{RC}t} = U\\ \\
+\end{math}
+\Large{Neznámou \(C(t)\) vypočítáme pomocí derivace:}\\
+\begin{math}
+\newline
+    RC\cdot C'(t)e^{-\frac{1}{RC}t} = U\\ 
+    C'(t)=\frac{U}{RCe^{-\frac{1}{RC}t}}\\ \\
+    \int  C'(t) = \int \frac{U}{RC}e^{\frac{1}{RC}t}\\ \\
+    C(t)=Ue^{\frac{1}{RC}}t+k\\ \\
+\end{math}
+\Large{Vyjádřené \(C(t)\) dosadíme opět do očekávaného řešení:}\\ 
+\begin{math}
+\newline
+    u_C = (Ue^{\frac{1}{RC}}t+k)e^{-\frac{1}{RC}t}\\ \\
+    u_C = U + ke^{-\frac{1}{RC}t}\\ \\
+\end{math}
+\newpage
+\noindent{
+\Large{K výpočtu parametru \(k\) dosadíme do rovnice počáteční podmínku \(t = 0\) a zadané \\hodnoty pro prvky obvodu:}\\
+}
+\begin{math}
+\newline
+    12=45+ke^{-\frac{1}{5\cdot 30}\cdot 0}\\
+    12=45+k\\ \\
+    k = -33\\ \\
+\end{math}
+\Large{Analytické řešení pro zadaný obvod tedy bude:}\\
+\begin{math}
+\newline
+    \underline{u_C = 45 -33e^{-\frac{1}{150}t}}\\ \\ \\
+\end{math}
+\Large{Ověření výsledku:}
+\begin{multicols}{2}
+\noindent{Pro \(t = 0\):}\\ \\
+\begin{math}
+    u_C = 45-33e^{-\frac{1}{150}\cdot 0}\\
+    u_C = 45 - 33\\
+    u_C = 12\: V\\ \\ \\ \\
+\end{math}
+\noindent{ Pro \(t = \infty\):}\\ \\
+\begin{math}
+    u_C = 45-33e^{-\frac{1}{150}\cdot\infty}\\
+    u_C = 45 - \frac{33}{\infty}\\
+\end{math}
+\noindent{\(u_C\) se bude nekonečně \\blížit hodnotě 45 V.}\\
+\end{multicols}
+
